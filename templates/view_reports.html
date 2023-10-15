@@ -1,0 +1,59 @@
+<html>
+<head>
+</head>
+<body>
+
+<h1>view reports</h1>
+<form action="/show_reports" method="POST">
+    <th>Start Date: </th>
+    <input type="date" name = "start_date" required/> </br>
+    <th>End Date: </th>
+    <input type="date" name = "end_date" required/> </br>    
+
+    <input type="submit" value = "show report within this date range" />
+</form> </br>
+
+
+
+<h2>Number of Tickets Sold within specified date range: {{date_range}}</h2>
+<h2>Number of Tickets Sold Last Year: {{year_amount}}</h2>
+<h2>Number of Tickets Sold Last Month: {{month_amount}}</h2>
+<h3>Last Month Report Detail</h3>
+
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+<table>
+	<th>customer email</th>
+	<th>ticket id</th>
+    <th>purchase date</th>
+    <th>purchase time</th>
+    <th>paid amount</th>
+
+{% for line in month_detail %}
+	<tr>
+		<td>{{line['email_address']}}</td>
+		<td>{{line['ticket_id']}}</td>
+        <td>{{line['purchase_date']}}</td>
+        <td>{{line['purchase_time']}}</td>
+        <td>{{line['actual_price']}}</td>
+	</tr>
+{% endfor %} </br>
+</table>
+
+
+
+
+{% if error %}
+	<p class="error"><strong>Error:</strong> {{error}}</p>
+{% endif %}
+
+<a href="/home">home</a></br>
+<a href="/logout">Logout</a>
+
+</body>
+
+
+</html>

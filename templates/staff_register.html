@@ -1,0 +1,28 @@
+<html>
+<head>
+</head>
+<body>
+
+
+<form action="/registerStaffAuth" method="POST">
+	<input type="text" name = "username" placeholder="username" required/> </br>
+	<input type="password" name = "password" placeholder="password" required/></br>
+	<input type="text" name = "fname" placeholder="first name" required>
+	<input type="text" name = "lname" placeholder="last name" required></br>
+	<t>Affliated airline:</t>
+	<select name="working_airline">
+		{%for line in airline%}
+			<option value="{{line['name']}}"> {{line['name']}}</option>
+		{% endfor %}
+	</select> </br>
+	<input type="text" name = "staff_email" placeholder="email address"></br>
+	<input type="text" name = "staff_phone" placeholder="phone number"></br>
+	<input type="submit" value = Register_staff />
+	{% if error %}
+		<p class="error"><strong>Error:</strong> {{error}}</p>
+	{% endif %}
+</form>
+
+<a href="/">Go back</a>
+</body>
+</html>

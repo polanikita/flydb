@@ -1,0 +1,61 @@
+<html>
+<head>
+</head>
+<body>
+
+<h1>Customer History</h1>
+
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+
+<table>
+	<th>Email Address</th>
+	<th>Name</th>
+    <th>Flights Taken</th>
+
+    
+	<tr>
+		<td>{{customer['email_address']}}</td>
+		<td>{{customer['fname']}} {{customer['lname']}}</td>
+        <td>
+            <table>
+                <th>Flight Number</th>    
+                <th>Departure Date</th>
+                <th>Departure Time</th>
+
+                {% for flight in flights_taken %}
+                    {% if flight['email_address'] == customer['email_address'] %}
+                        <tr>
+                            <td>{{ flight['flight_num'] }}</td>
+                            <td>{{ flight['dept_date'] }}</td>
+                            <td>{{ flight['dept_time'] }}</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </td>
+    </tr>
+    
+
+{% if error %}
+		<p class="error"><strong>Error:</strong> {{error}}</p>
+{% endif %}
+</table>
+
+</body>
+</html>
+
+ </br>
+
+</table>
+
+<a href="/home">home</a></br>
+<a href="/logout">Logout</a>
+
+</body>
+
+
+</html>

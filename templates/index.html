@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<style type="text/css">
+		table, th, td{
+			border: 1px solid black;
+		}
+	</style>
+</head>
+
+<body>
+
+
+
+	<a href ="/flight_status">Flight Status</a>
+	<a href="/customer_login">Customer Login</a>
+	<a href="/customer_register">Customer Register</a>
+	<a href="/staff_login">Airline Staff Login</a>
+	<a href="/staff_register">Airline Staff Register</a>
+
+	<br><br><br>
+	
+	<form action = "/index_search_flights" method = "POST"> 
+
+	<label for="source_airport">From</label>
+
+	<select name="from_city" required>
+
+
+	{% for line in airport_cities%}
+	<option>{{line['city']}}</option>
+	{% endfor %}
+
+	</select>
+
+
+	<label for="destination_airport">To</label>
+	
+	<select name="to_city" required>
+	{% for line in airport_cities%}
+	<option>{{line['city']}}</option>
+	{% endfor %}
+	</select><br><br>
+
+	
+		<label for="dept_date">Departure Date:</label><br>
+		<input type="date" name="dept_date" placeholder = "YYYY-MM-DD" required><br><br>
+		<label for="return_date">Return Date:</label><br>
+		<input type="date" name="return_date" placeholder = "YYYY-MM-DD" required><br><br>
+		<input type="submit" value="Submit">
+		
+	</form>
+
+
+	<table>
+	
+		<th>Flight Number</th>
+		<th>Airline Name</th>
+		<th>Departure Date</th>
+		<th>Departure Time</th>
+		<th>Arrival Date</th>
+		<th>Arrival Time</th>
+
+
+	{% for line in flights %}
+	<tr>
+		<td>{{line['flight_num']}}</td>
+		<td>{{line['airline_name']}}</td>
+		<td>{{line['dept_date']}}</td>
+		<td>{{line['dept_time']}}</td>
+		<td>{{line['arr_date']}}</td>
+		<td>{{line['arr_time']}}</td>
+	</tr>
+	{% endfor %}
+
+	</table>
+
+
+	
+
+
+</body>
+
+</html>

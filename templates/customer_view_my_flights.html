@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+   
+<head>
+
+</head>
+
+<body> 
+    <h1>My Future Flights</h1>
+
+    <table>
+  
+        <th>Purchase Date</th>
+        <th>Flight Number</th>
+        <th>Airline Name</th>
+        <th>Actual Price</th>
+        <th>Departure Date</th>
+        <th>Departure Time</th>
+    
+    
+    {% for line in flights %}
+    <tr>
+        
+        <td>{{line['purchase_date']}}</td>
+        <td>{{line['flight_num']}}</td>
+        <td>{{line['airline_name']}}</td>
+        <td>{{line['actual_price']}}</td>
+        <td>{{line['dept_date']}}</td>
+        <td>{{line['dept_time']}}</td>
+    
+    </tr>
+    {% endfor %}
+    
+
+</body>
+<a href="/customer_home">home</a></br>
+<a href="/logout">Logout</a>
+</html>

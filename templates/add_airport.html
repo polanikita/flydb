@@ -1,0 +1,32 @@
+<html>
+<head>
+</head>
+<body>
+
+<h1>Add An Airport</h1>
+<form action="/new_airport" method="POST">
+    <input type="text" name = "code" placeholder="airport code" required/> </br>
+    <input type="text" name = "name" placeholder="airport name" required/> </br>
+    <input type="text" name = "city" placeholder="city" required/> </br>
+    <input type="text" name = "country" placeholder="country" required/> </br>
+    <th>Airport type</th>
+    <select name="type">
+		<option value="domestic"> domestic</option>
+        <option value="international"> international</option>
+		<option value="both"> both</option>
+	</select> </br>
+
+    <input type="submit" value = "add airport" />
+    
+    {% if error %}
+		<p class="error"><strong>Error:</strong> {{error}}</p>
+	{% endif %}
+</form>
+
+<a href="/home">home</a></br>
+<a href="/logout">Logout</a>
+
+</body>
+
+
+</html>

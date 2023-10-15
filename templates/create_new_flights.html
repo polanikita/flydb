@@ -1,0 +1,94 @@
+<html>
+<head>
+</head>
+<body>
+
+<h1>create new flights</h1>
+
+<form action="/new_flights" method="POST">
+    <input type="text" name = "flight_num" placeholder="flight_num" required/> </br>
+    <t>Departure date:</t> 
+    <input type="date" name = "dept_date" placeholder="dept_date" required> </br>
+    <t>Departure time:</t> 
+    <input type="time" name = "dept_time" placeholder="dept_time" required> </br>
+    <t>Operating airline:</t>
+    <select name="airline_name">
+		{%for line in airline%}
+        <option value="{{line['working_airline']}}"> {{line['working_airline']}}</option>
+		{% endfor %}
+	</select> </br>  
+    <t>Departure airport:</t> 
+    <select name="dept_code">
+		{%for line in airport%}
+			<option value="{{line['airport_code']}}"> {{line['airport_code']}}</option>
+		{% endfor %}
+	</select> </br> 
+    <t>Arrival airport:</t> 
+    <select name="arr_code">
+		{%for line in airport%}
+			<option value="{{line['airport_code']}}"> {{line['airport_code']}}</option>
+		{% endfor %}
+	</select> </br>    
+    <t>Airplane:</t> 
+    <select name="airplane_id">
+		{%for line in airplane%}
+			<option value="{{line['airplane_id']}}"> airplane id: {{line['airplane_id']}},
+                with capacity of {{line['num_seats']}} from {{line['manufacture_company']}}
+            </option>
+		{% endfor %}
+	</select> </br>   
+    <t>Arrival Date:</t> 
+    <input type="date" name = "arr_date" placeholder="arr_date" required> </br>
+    <t>Arrival Time:</t> 
+    <input type="time" name = "arr_time" placeholder="arr_time" required> </br>
+    <input type="text" name = "base_ticket_price" placeholder="base_ticket_price" required> </br>
+    <input type = submit value = "create flight"/>
+</form>
+
+<h2>recent flights within 30 days:</h2>
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+
+<table>
+	<th>Flight Number</th>
+	<th>Departure Date</th>
+    <th>Departure Time</th>
+    <th>Airline Name</th>
+    <th>Departure Airport</th>
+    <th>Arrival Airport</th>
+    <th>Airplane ID</th>
+    <th>Arrival Date</th>
+    <th>Arrival Time</th>
+    <th>Base Ticket Price</th>
+
+
+{% for line in flight %}
+	<tr>
+		<td>{{line['flight_num']}}</td>
+		<td>{{line['dept_date']}}</td>
+        <td>{{line['dept_time']}}</td>
+        <td>{{line['airline_name']}}</td>
+        <td>{{line['dept_code']}}</td>
+        <td>{{line['arr_code']}}</td>
+        <td>{{line['airplane_id']}}</td>
+        <td>{{line['arr_date']}}</td>
+        <td>{{line['arr_time']}}</td>
+        <td>{{line['base_ticket_price']}}</td>
+
+
+
+	</tr>
+{% endfor %}
+
+</table>
+
+<a href="/home">home</a></br>
+<a href="/logout">Logout</a>
+
+</body>
+
+
+</html>

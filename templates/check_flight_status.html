@@ -1,0 +1,70 @@
+<html>
+<head>
+</head>
+<body>
+
+<h1>check flight status</h1>
+<form action="/show_flight_status" method="POST">
+    <input type="text" name = "flight_num" placeholder = "flight number" required/><br>
+    <th>Departure Date: </th>
+    <input type="date" name = "dept_date" required/> </br>
+    <th>Departure Time </th>
+    <input type="time" name = "dept_time" required/> </br>
+    <t>Airline:</t>
+    <select name="airline_name">
+		{%for line in airline%}
+			<option value="{{line['working_airline']}}"> {{line['working_airline']}}</option>
+		{% endfor %}
+	</select> </br>
+
+    <input type="submit" value = "see status" required/>
+</form> </br>
+
+
+{% if error %}
+		<p class="error"><strong>Error:</strong> {{error}}</p>
+    {%else%}
+        {%if status %}
+            <th> flight {{flight_num}} Departing at {{dept_date}}, {{dept_time}} is</th>
+            <h1>{{status['flight_status']}}</h1>
+        {% else %}
+            <h1>No Status Info Yet</h1>
+        {%endif%}
+{% endif %} </br>
+
+
+<h2>recent flights within 30 days:</h2>
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+
+<table>
+	<th>Flight Number</th>
+	<th>Departure Date</th>
+    <th>Departure Time</th>
+    <th>Airline Name</th>
+    <th>flight_status</th>
+
+
+{% for line in flight %}
+	<tr>
+		<td>{{line['flight_num']}}</td>
+		<td>{{line['dept_date']}}</td>
+        <td>{{line['dept_time']}}</td>
+        <td>{{line['airline_name']}}</td>
+        <td>{{line['flight_status']}}</td>
+	</tr>
+{% endfor %} </br>
+</table>
+
+
+
+<a href="/home">home</a></br>
+<a href="/logout">Logout</a>
+
+</body>
+
+
+</html>

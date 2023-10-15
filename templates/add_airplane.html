@@ -1,0 +1,30 @@
+<head>
+</head>
+<body>
+
+<h1>Add An Airplane</h1>
+<form action="/new_airplane" method="POST">
+    <input type="text" name = "airplane_id" placeholder="airplane id" required/> </br>
+	<t>Affliated airline:</t>
+	<select name="airline">
+		{%for line in airline%}
+			<option value="{{line['working_airline']}}"> {{line['working_airline']}}</option>
+		{% endfor %}
+	</select> </br>
+	<input type="number" name = "num_seats" placeholder="number of seats" required></br>
+	<th>date of manufacture</th>
+	<input type="date" name = "manufacture_date" placeholder=" manufacture date"required/></br>
+    <input type = "text" name = "manufacture_company" placeholder="manufacture company"required/></br>
+	<input type="submit" value = "add airplane" />
+    {% if error %}
+		<p class="error"><strong>Error:</strong> {{error}}</p>
+	{% endif %}
+</form>
+
+<a href="/home">home</a></br>
+<a href="/logout">Logout</a>
+
+</body>
+
+
+</html>

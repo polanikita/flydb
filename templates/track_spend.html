@@ -1,0 +1,56 @@
+<html> 
+<head> 
+</head>
+
+<body> 
+    <h1> Track your Spending </h1> 
+    <h2> Total Spent Year : {{total_spent_year}}</h2>
+
+
+    <form action="/track_spend_custom" method="POST">
+        <label for="from_date">From Date:</label><br> 
+        <input type="date" name = "from_date" placeholder = "YYYY-MM-DD" required /> </br>
+        <label for="to_date">To Date:</label><br> 
+        <input type="date" name = "to_date" placeholder = "YYYY-MM-DD" required/> </br>
+    
+    
+        <input type="submit" value="Submit">
+        {% if error %}
+            <p class="error"><strong>Error:</strong> {{error}}</p>
+        {% endif %}
+    </form> 
+
+ 
+    
+    <table>
+        <th>Month</th>
+        <th>Amount Spent</th>
+    
+        
+    </br>
+    
+    {% for line in data %}
+<tr>
+    <td>{{line['num_month']}}</td>
+    <td>{{line['actual_price']}}</td>
+</tr>
+    {% endfor %}
+
+
+
+    
+    </table>
+
+    </form>
+    
+
+
+
+
+ 
+
+
+</body>
+<a href="/customer_home">home</a></br>
+<a href="/logout">Logout</a>
+</html>

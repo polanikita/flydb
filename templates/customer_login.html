@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+<form action="/customer_loginAuth" method="POST">
+    <label for="email_address">Email Address:</label><br> 
+    <input type="text" name="email_address" required><br>
+    <label for="password">Password:</label><br> 
+    <input type="password" name="password" required><br>
+
+
+    <input type="submit" value="Login">
+    {% if error %}
+		<p class="error"><strong>Error:</strong> {{error}}</p>
+	{% endif %}
+</form> 
+
+</body>
+
+<a href="/">welcome page</a></br>
+</html>

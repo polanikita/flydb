@@ -1,0 +1,66 @@
+<html>
+<head>
+</head>
+<body>
+
+<h1>view flights</h1>
+
+<form action="/search_view_flights" method="POST">
+    <th>Earliest Departure Date: </th>
+    <input type="date" name = "start_date"/> </br>
+    <th>Latest Departure Date </th>
+    <input type="date" name = "end_date" /> </br>
+    <input type="submit" value = "view flights" />
+    {% if error %}
+		<p class="error"><strong>Error:</strong> {{error}}</p>
+	{% endif %}
+
+
+</form>
+
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+
+<table>
+	<th>Flight Number</th>
+	<th>Departure Date</th>
+    <th>Departure Time</th>
+    <th>Airline Name</th>
+    <th>Departure Airport</th>
+    <th>Arrival Airport</th>
+    <th>Airplane ID</th>
+    <th>Arrival Date</th>
+    <th>Arrival Time</th>
+    <th>Base Ticket Price</th>
+
+
+{% for line in flight %}
+	<tr>
+		<td>{{line['flight_num']}}</td>
+		<td>{{line['dept_date']}}</td>
+        <td>{{line['dept_time']}}</td>
+        <td>{{line['airline_name']}}</td>
+        <td>{{line['dept_code']}}</td>
+        <td>{{line['arr_code']}}</td>
+        <td>{{line['airplane_id']}}</td>
+        <td>{{line['arr_date']}}</td>
+        <td>{{line['arr_time']}}</td>
+        <td>{{line['base_ticket_price']}}</td>
+
+
+
+	</tr>
+{% endfor %}
+
+</table>
+
+<a href="/home">home</a></br>
+<a href="/logout">Logout</a>
+
+</body>
+
+
+</html>

@@ -1,0 +1,40 @@
+<html>
+<head>
+</head>
+<body>
+
+<h1>view flight rating</h1>
+<form action="/show_flight_rating" method="POST">
+    <input type="text" name = "flight_num" placeholder = "flight number"/ required><br>
+    <th>Departure Date: </th>
+    <input type="date" name = "dept_date" required/> </br>
+    <th>Departure Time </th>
+    <input type="time" name = "dept_time" required/> </br>
+    <t>Airline:</t>
+    <select name="airline_name">
+		{%for line in airline%}
+			<option value="{{line['working_airline']}}"> {{line['working_airline']}}</option>
+		{% endfor %}
+	</select> </br>
+
+    <input type="submit" value = "show average rating" />
+</form> </br>
+
+{% if error %}
+		<p class="error"><strong>Error:</strong> {{error}}</p>
+    {%else%}
+        {%if avg_rating %}
+            <th> flight {{flight_num}} Departing at {{dept_date}}, {{dept_time}} has average rating of</th>
+            <h2>{{avg_rating['AVG(rating)']}}</h2>
+        {% else %}
+            <h1>No ratings Yet</h1>
+        {%endif%}
+{% endif %} </br>
+
+<a href="/home">home</a></br>
+<a href="/logout">Logout</a>
+
+</body>
+
+
+</html>

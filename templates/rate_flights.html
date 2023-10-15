@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<head>
+
+    <style> 
+       
+        #textboxid{ 
+            height:200px;
+            width: 500px; 
+            font-size:14pt;
+       
+        }
+    </style>
+
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+
+</head>
+
+
+<body>
+    <h1> Rate your Flight </h1>
+
+    <form action = "/rate_flights" method = "POST">
+        <label for="rating">Rating</label><br> 
+        <input type="number" name="rating" placeholder="1-10" required><br>
+        <label for="comments">Comments (Max 500 Characters)</label><br> 
+        <input type="text" id = "textboxid" name="comments" required><br>
+    
+
+
+   
+        <table>
+            <th>Ticket ID</th>
+            <th>Flight Number</th>
+
+            <th>Airline Name</th>
+            <th>Departure Date</th>
+            <th>Departure Time</th>
+            
+        </br><t>Unrated previous flights</t>
+        {% for line in previous_flights %}
+        <tr>
+            
+            
+           <td> 
+            <input type="radio" name="ticket_id" value={{line['ticket_id']}} required>
+                {{line['ticket_id']}}
+           </td> 
+           
+           <td>{{line['flight_num']}}</td>
+            <td>{{line['airline_name']}}</td>
+            <td>{{line['dept_date']}}</td>
+            <td>{{line['dept_time']}}</td>
+    
+        </tr>
+        {% endfor %}
+        <input type="submit" value="Submit"> 
+
+       
+        </form> 
+    </table>
+
+
+</body>
+
+<a href="/customer_home">home</a></br>
+<a href="/logout">Logout</a>
+
+</html>
+
+
+

@@ -1,0 +1,62 @@
+<html>
+<head>
+</head>
+<body>
+
+<h1>Frequent Customers</h1>
+
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+
+<table>
+	<th>Email Address</th>
+	<th>Name</th>
+    <th> Number of Flights Taken</th>
+
+
+    {% for line in customers %}
+    
+	<tr>
+		<td>{{line['email_address']}}</td>
+		<td>{{line['fname']}} {{line['lname']}}</td>
+        <td>{{line['flight_count']}}</td>
+    </tr>
+    
+{% endfor %}
+
+</table>
+</br>
+<form action="/show_customer_flights" method="POST">
+    <select name="email_address">
+		{%for line in customers%}
+			<option value="{{line['email_address']}}">{{line['fname']}}{{line['lname']}}, {{line['email_address']}}</option>
+		{% endfor %}
+	</select> </br>
+
+    <input type="submit" value = "see travel history" />
+</form> </br>
+
+
+
+
+</body>
+</html>
+
+</br>
+
+</table>
+
+{% if error %}
+		<p class="error"><strong>Error:</strong> {{error}}</p>
+{% endif %}
+
+<a href="/home">home</a></br>
+<a href="/logout">Logout</a>
+
+</body>
+
+
+</html>

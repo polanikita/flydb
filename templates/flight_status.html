@@ -1,0 +1,36 @@
+
+<html> 
+
+<head> 
+</head>
+
+
+
+<body> 
+
+
+    <h1> Flight Status </h1> 
+
+<table>
+  
+    <th>Airline Name</th>
+    <th>Flight Number</th>
+    <th>Departure Date</th>
+    <th>Flight Status</th>
+  
+
+
+{% for line in flight_details %}
+<tr>
+    <td>{{line['airline_name']}}</td>
+    <td>{{line['flight_num']}}</td>
+    <td>{{line['dept_date']}}</td>
+    <td>{{line['flight_status']}}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+</body>
+<a href="/">welcome page</a></br>
+</html>

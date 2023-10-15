@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+
+<form action = "/purchase_tickets" method = "POST">
+
+    
+    <h1> Purchase Ticket </h1> 
+    <h2>Card Information</h2><br>
+
+    <input type = "hidden" name = "flight_num" value = "{{flight_num}}" required> 
+
+
+
+    <label for="card_type">Card Type</label><br> 
+    <input type="text" name="card_type" required><br>
+
+    <label for="card_num">Card Number</label><br> 
+    <input type="text" name="card_num" required><br>
+
+    <label for="card_name">Card Nameholder</label><br> 
+    <input type="text" name="card_name" required><br>
+
+    <label for="exp_date">Expiration Date</label><br> 
+    <input type="date" name="exp_date" required><br><br><br> 
+
+    <h2>Passenger Information</h2><br>
+
+    <label for="passenger_email">Passenger Email</label><br> 
+    <input type="text" name="passenger_email" required><br>
+
+    <label for="passenger_fname">Passenger First Name</label><br> 
+    <input type="text" name="passenger_fname" required><br>
+
+    <label for="passenger_lname">Passenger Last Name</label><br> 
+    <input type="text" name="passenger_lname" required><br>
+
+    <label for="passenger_dob">Passenger Date of Birth</label><br> 
+    <input type="date" name="passenger_dob" required><br><br><br> 
+
+
+    <input type="submit" value="Submit">
+</form> 
+
+</body>
+
+<a href="/customer_home">home</a></br>
+<a href="/logout">Logout</a>
+</html>
